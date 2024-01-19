@@ -4,8 +4,8 @@ This project provides a simple utility for converting between string representat
 
 ## Features
 
-- Convert a string representation of an IPv4 address to a 32-bit integer.
-- Convert a 32-bit integer to a string representation of an IPv4 address.
+- Convert a string representation of an IPv4 address to a **signed** 32-bit integer.
+- Convert a **signed/unsigned** 32-bit integer to a string representation of an IPv4 address.
 - Validate if a string is a valid IPv4 address.
 
 ## Usage
