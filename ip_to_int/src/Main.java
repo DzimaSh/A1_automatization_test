@@ -26,7 +26,11 @@ public class Main {
                 case "-ito32":
                     while (i + 1 < args.length && !args[i + 1].startsWith("-")) {
                         String ipString = args[i + 1];
-                        System.out.println(converter.ipToInt32(ipString));
+                        if (ParseUtils.isValidIp(ipString)) {
+                            System.out.println(converter.ipToInt32(ipString));
+                        } else {
+                            System.out.println("invalid");
+                        }
                         i++;
                     }
                     break;
