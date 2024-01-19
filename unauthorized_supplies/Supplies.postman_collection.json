@@ -1,0 +1,75 @@
+{
+	"info": {
+		"_postman_id": "3cd4a082-94a4-4be1-b783-a298795f652a",
+		"name": "Supplies",
+		"description": "Use the only provided endpoint to fetch postings by perion and authorized status",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19786201"
+	},
+	"item": [
+		{
+			"name": "Get Postings by period and authorized",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{postings_url}}/search/filter?startDate=2019-07-27&endDate=2021-08-27&authorized=true",
+					"host": [
+						"{{postings_url}}"
+					],
+					"path": [
+						"search",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "startDate",
+							"value": "2019-07-27"
+						},
+						{
+							"key": "endDate",
+							"value": "2021-08-27"
+						},
+						{
+							"key": "authorized",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080/api",
+			"type": "string"
+		},
+		{
+			"key": "postings_url",
+			"value": "{{base_url}}/postings",
+			"type": "string"
+		}
+	]
+}

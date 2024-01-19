@@ -32,12 +32,21 @@ public class CsvService {
     private final Constants constants;
 
     @PostConstruct
-    public void readCsvFiles() throws IOException {
-        readLogins();
-        readPostings();
+    public void readCsvFiles() {
+        log.info("Starting to read CSV files");
+        try {
+            readLogins();
+            readPostings();
+        } catch (IOException e) {
+            log.error("Error reading CSV files", e);
+        } finally {
+            log.info("Finished reading CSV files");
+        }
     }
 
     private void readLogins() throws IOException {
+        log.debug("Reading logins");
+
         Resource loginsResource = resourceLoader.getResource(constants.getDataLocation() + "logins.csv");
         try (Reader reader = new InputStreamReader(loginsResource.getInputStream())) {
             CSVReader csvReader = new TrimmedLineCsvReader(reader);
@@ -64,6 +73,8 @@ public class CsvService {
     }
 
     private void readPostings() throws IOException {
+        log.debug("Reading postings");
+
         Resource postingsResource = resourceLoader.getResource(constants.getDataLocation() + "postings.csv");
         try (Reader reader = new InputStreamReader(postingsResource.getInputStream())) {
             TrimmedLineCsvReader csvReader = new TrimmedLineCsvReader(reader);
@@ -136,5 +147,7 @@ public class CsvService {
                 posting.setAuthorized(false);
             }
         }
+
+        log.debug("Marked postings as authorized: {}", postings);
     }
 }
