@@ -1,9 +1,11 @@
 # Series Calculator
 
 This project calculates the sum of the series
+
 $$
 u_n = \frac{1}{n!} \sum_{k=1}^{n} k!  
 $$
+
 using Java.
 
 ## Prerequisites
