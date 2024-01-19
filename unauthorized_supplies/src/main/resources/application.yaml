@@ -1,3 +1,6 @@
+data:
+  location: classpath:/data/
+
 server:
   port: ${SERVER_PORT:8080}
 

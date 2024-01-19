@@ -8,7 +8,7 @@ CREATE TABLE logins
 (
     id             BIGINT PRIMARY KEY,
     Application    VARCHAR(255) NOT NULL,
-    AppAccountName VARCHAR(255) NOT NULL,
+    AppAccountName VARCHAR(255) UNIQUE NOT NULL,
     IsActive       BOOLEAN      NOT NULL,
     JobTitle       VARCHAR(255),
     Department     VARCHAR(255)
@@ -25,14 +25,14 @@ CREATE TABLE postings
     id                  BIGINT PRIMARY KEY,
     MatDoc              VARCHAR(255) NOT NULL,
     Item                INT,
-    DocDate             DATE,
-    PstngDate           DATE,
+    DocDate             TIMESTAMP WITH TIME ZONE,
+    PstngDate           TIMESTAMP WITH TIME ZONE,
     MaterialDescription VARCHAR(255),
     Quantity            INT,
     BUn                 VARCHAR(255),
     AmountLC            DECIMAL(10, 2),
     Crcy                VARCHAR(255),
-    UserName            VARCHAR(255),
+    UserName            VARCHAR(255) REFERENCES logins(AppAccountName) ON DELETE SET NULL,
     Authorized          BOOLEAN
 );
 ALTER TABLE logins ALTER id
