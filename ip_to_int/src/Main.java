@@ -18,7 +18,7 @@ public class Main {
                     break;
                 case "-32toi":
                     while (i + 1 < args.length && ParseUtils.isNumeric(args[i + 1])) {
-                        int ipInt = Integer.parseInt(args[i + 1]);
+                        int ipInt = (int) Long.parseLong(args[i + 1]);
                         System.out.println(converter.int32ToIp(ipInt));
                         i++;
                     }
