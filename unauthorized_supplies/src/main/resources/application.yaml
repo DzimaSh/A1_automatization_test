@@ -1,0 +1,39 @@
+data:
+  location: classpath:/data/
+
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  data:
+    rest:
+      base-path: api
+
+  application:
+    name: car-directory
+
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${POSTGRES_DB:supplies}
+    username: ${POSTGRES_USER:root}
+    password: ${POSTGRES_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+      format_sql: true
+
+    show-sql: false
+
+  liquibase:
+    change-log: db/changelog/db.changelog-master.yaml
+    default-schema: ${POSTGRES_DEFAULT_SCHEMA:supplies}
+
+logging:
+  level:
+    org.hibernate.SQL: info
+    by.bsu.cardirectory: info

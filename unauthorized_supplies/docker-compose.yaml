@@ -1,0 +1,38 @@
+version: '3.6'
+
+networks:
+  supplies:
+    name: supplies
+
+
+services:
+  postgres:
+    container_name: db.container.local
+    build:
+      dockerfile: provision/docker/postgres/Dockerfile
+    image: supplies-db:latest
+    env_file:
+      - provision/env/postgres.env
+    volumes:
+      - ./provision/docker/postgres/init_scripts:/docker-entrypoint-initdb.d
+    ports:
+      - '127.0.0.1:5432:5432'
+    networks:
+      - supplies
+
+  backend:
+    container_name: be.container.local
+    build:
+      dockerfile: provision/docker/backend/Dockerfile
+    image: supplies-backend:latest
+    env_file:
+      - provision/env/postgres.env
+      - provision/env/backend.env
+    volumes:
+      - ./:/source
+    depends_on:
+      - postgres
+    ports:
+      - '8080:8080'
+    networks:
+      - supplies
