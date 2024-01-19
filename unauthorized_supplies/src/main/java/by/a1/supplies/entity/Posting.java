@@ -3,7 +3,6 @@ package by.a1.supplies.entity;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvDate;
 import com.opencsv.bean.CsvNumber;
-import com.opencsv.bean.CsvRecurse;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
